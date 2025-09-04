@@ -1,0 +1,41 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": [],
+      "inputs": ["**/*.{js,ts,tsx}", "eslint.config.js", ".eslintrc*"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "outputs": [],
+      "inputs": ["**/*.{js,ts,tsx}", "eslint.config.js", ".eslintrc*"],
+      "cache": false
+    },
+    "format": {
+      "outputs": [],
+      "inputs": ["**/*.{js,ts,tsx,json,md}", ".prettierrc*", "prettier.config.*"]
+    },
+    "format:check": {
+      "outputs": [],
+      "inputs": ["**/*.{js,ts,tsx,json,md}", ".prettierrc*", "prettier.config.*"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"],
+      "outputs": [],
+      "inputs": ["**/*.{ts,tsx}", "tsconfig.json"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "outputs": []
+    }
+  }
+}
