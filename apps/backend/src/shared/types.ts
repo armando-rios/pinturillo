@@ -46,4 +46,3 @@ export interface ChatMessage {
   isGuess: boolean;
   isCorrect?: boolean;
 }
-

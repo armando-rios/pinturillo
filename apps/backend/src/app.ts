@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
+import { config } from './shared/config.ts';
 import { connectToDatabase } from './shared/database.ts';
 import { createSocketServer } from './shared/socket.ts';
 
@@ -10,7 +11,7 @@ const httpServer = createServer(app);
 // Configuración de CORS
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://localhost:3000'],
+    origin: config.corsOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,

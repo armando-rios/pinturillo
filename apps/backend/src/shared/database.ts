@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/pinturillo';
+import { config } from './config.ts';
 
 export const connectToDatabase = async (): Promise<void> => {
   try {
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(config.mongodbUri);
     console.log('✅ Conectado a MongoDB exitosamente');
 
     mongoose.connection.on('error', error => {

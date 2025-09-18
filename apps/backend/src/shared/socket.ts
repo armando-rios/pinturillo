@@ -1,5 +1,6 @@
 import { Server as HttpServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
+import { config } from './config.ts';
 import type { User, Room, DrawingData, ChatMessage } from './types.ts';
 
 export interface ServerToClientEvents {
@@ -71,13 +72,13 @@ export const createSocketServer = (httpServer: HttpServer): TypedSocket => {
     SocketData
   >(httpServer, {
     cors: {
-      origin: ['http://localhost:5173', 'http://localhost:3000'],
+      origin: config.corsOrigins,
       methods: ['GET', 'POST'],
       credentials: true,
     },
     // Configuración para mejor rendimiento
-    pingTimeout: 60000,
-    pingInterval: 25000,
+    pingTimeout: config.socket.pingTimeout,
+    pingInterval: config.socket.pingInterval,
     transports: ['websocket', 'polling'],
   });
 
@@ -93,7 +94,7 @@ export const createSocketServer = (httpServer: HttpServer): TypedSocket => {
     const user: User = {
       id: socket.id,
       username: username.trim(),
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}`,
+      avatar: `${config.dicebearApiUrl}?seed=${username}`,
       isOnline: true,
     };
 
@@ -130,7 +131,7 @@ export const createSocketServer = (httpServer: HttpServer): TypedSocket => {
       if (socket.data.user) {
         const oldUsername = socket.data.user.username;
         socket.data.user.username = newUsername.trim();
-        socket.data.user.avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${newUsername}`;
+        socket.data.user.avatar = `${config.dicebearApiUrl}?seed=${newUsername}`;
 
         console.log(`🔄 Usuario cambió nombre: ${oldUsername} -> ${newUsername}`);
       }
@@ -139,4 +140,3 @@ export const createSocketServer = (httpServer: HttpServer): TypedSocket => {
 
   return io;
 };
-
