@@ -1,8 +1,11 @@
 import express from 'express';
 import cors from 'cors';
+import { createServer } from 'http';
 import { connectToDatabase } from './shared/database.ts';
+import { createSocketServer } from './shared/socket.ts';
 
 const app = express();
+const httpServer = createServer(app);
 
 // Configuración de CORS
 app.use(
@@ -35,5 +38,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-export { app, connectToDatabase };
+// Inicializar Socket.IO
+const io = createSocketServer(httpServer);
 
+export { app, httpServer, io, connectToDatabase };
