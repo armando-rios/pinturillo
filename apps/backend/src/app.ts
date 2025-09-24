@@ -6,6 +6,9 @@ import { config } from './shared/config.ts';
 import { connectToDatabase } from './shared/database.ts';
 import { createSocketServer } from './shared/socket.ts';
 import { authRoutes } from './features/auth/auth.routes.ts';
+import { roomsRoutes } from './features/rooms/rooms.routes.ts';
+import { gameRoutes } from './features/game/game.routes.ts';
+import { drawingRoutes } from './features/drawing/drawing.routes.ts';
 
 const app = express();
 const httpServer = createServer(app);
@@ -29,7 +32,14 @@ app.get('/', (req, res) => {
   res.json({
     message: 'Pinturillo Backend API',
     status: 'running',
-    features: ['auth', 'rooms', 'game', 'drawing'],
+    version: '1.0.0',
+    features: ['auth', 'rooms', 'games', 'drawings'],
+    endpoints: {
+      auth: '/api/auth',
+      rooms: '/api/rooms',
+      games: '/api/games',
+      drawings: '/api/drawings',
+    },
   });
 });
 
@@ -44,6 +54,9 @@ app.get('/health', (req, res) => {
 
 // Rutas de API
 app.use('/api/auth', authRoutes);
+app.use('/api/rooms', roomsRoutes);
+app.use('/api/games', gameRoutes);
+app.use('/api/drawings', drawingRoutes);
 
 // Middleware de manejo de errores
 app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
