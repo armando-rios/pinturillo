@@ -4,28 +4,18 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun --hot index.ts",
-    "build": "bun build index.ts --outdir dist --target node",
-    "start": "bun dist/index.js",
-    "lint": "eslint . --ext .js,.ts",
-    "lint:fix": "eslint . --ext .js,.ts --fix",
+    "dev": "bun run src/main.ts --watch",
+    "build": "bun build src/main.ts --outdir dist",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check-types": "tsc --noEmit",
-    "test": "bun test"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "mongoose": "^8.18.0",
-    "socket.io": "^4.8.1"
+    "@pinturillo/eslint-config": "workspace:*",
+    "@pinturillo/typescript-config": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
   }
 }
