@@ -15,6 +15,7 @@
   "dependencies": {
     "@pinturillo/eslint-config": "workspace:*",
     "@pinturillo/typescript-config": "workspace:*",
+    "lucide-react": "^0.552.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
