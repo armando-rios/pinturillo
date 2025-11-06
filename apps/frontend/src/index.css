@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+}
+
+@theme {
+  --color-theme-primary: hsl(232deg, 97%, 15%);
+  --color-theme-secondary: hsl(343deg, 81%, 75%);
+  --color-theme-text: hsl(0deg, 0%, 100%);
+}
+
+.dark {
+  --color-theme-primary: hsl(232deg, 97%, 85%);
+  --color-theme-secondary: hsl(343deg, 81%, 75%);
+  --color-theme-text: hsl(237deg, 16%, 23%);
+}
