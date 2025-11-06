@@ -18,11 +18,19 @@
     },
     "format": {
       "outputs": [],
-      "inputs": ["**/*.{js,ts,tsx,json,md}", ".prettierrc*", "prettier.config.*"]
+      "inputs": [
+        "**/*.{js,ts,tsx,json,md}",
+        ".prettierrc*",
+        "prettier.config.*"
+      ]
     },
     "format:check": {
       "outputs": [],
-      "inputs": ["**/*.{js,ts,tsx,json,md}", ".prettierrc*", "prettier.config.*"]
+      "inputs": [
+        "**/*.{js,ts,tsx,json,md}",
+        ".prettierrc*",
+        "prettier.config.*"
+      ]
     },
     "check-types": {
       "dependsOn": ["^check-types"],

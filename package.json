@@ -12,27 +12,12 @@
     "test": "turbo test"
   },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
-    "@types/bun": "latest",
-    "@types/cookie-parser": "^1.4.9",
-    "@types/jsonwebtoken": "^9.0.10",
-    "eslint": "^9.34.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.6.2",
-    "turbo": "^2.5.6"
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.3"
   },
   "packageManager": "bun@1.2.20",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "jsonwebtoken": "^9.0.2"
-  }
+  ]
 }
